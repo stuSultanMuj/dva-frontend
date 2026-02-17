@@ -1,59 +1,193 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Markdown styling for assistant messages */
-.dva-assistant-message h3 {
-  font-weight: 600;
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
+/* ================================================
+   DVA Design System
+   Digital Visibility Agent — Minimal, warm, alive
+   ================================================ */
+
+@layer base {
+  body {
+    @apply bg-stone-50 text-gray-900 antialiased;
+  }
+
+  /* Subtle, minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
 }
-.dva-assistant-message p {
-  margin-bottom: 0.5rem;
+
+/* ================================================
+   Thinking Animation System
+   Psychology: specificity builds trust,
+   staged progress reduces perceived wait time,
+   organic motion feels alive not mechanical
+   ================================================ */
+
+/* Dot wave — smooth bounce with stagger */
+@keyframes dva-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
 }
-.dva-assistant-message p:last-child {
-  margin-bottom: 0;
+
+.dva-dot {
+  @apply inline-block h-1.5 w-1.5 rounded-full bg-indigo-400;
+  animation: dva-bounce 1.4s ease-in-out infinite;
 }
-.dva-assistant-message strong {
-  font-weight: 600;
+
+/* Shimmer sweep — subtle movement on thinking area */
+@keyframes dva-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
-.dva-assistant-message ul {
-  margin-left: 1rem;
-  list-style-type: disc;
-  margin-bottom: 0.5rem;
+
+.dva-thinking-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: dva-shimmer 3s ease-in-out infinite;
 }
-.dva-assistant-message ol {
-  margin-left: 1rem;
-  list-style-type: decimal;
-  margin-bottom: 0.5rem;
+
+/* Message entrance — subtle slide up */
+@keyframes dva-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.dva-assistant-message li {
-  margin-bottom: 0.25rem;
+
+.dva-message-enter {
+  animation: dva-slide-up 0.25s ease-out;
 }
-.dva-assistant-message table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.5rem 0;
-  font-size: 0.8125rem;
+
+/* Fade in */
+@keyframes dva-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.dva-assistant-message th {
-  border: 1px solid #d1d5db;
-  background-color: #e5e7eb;
-  padding: 0.375rem 0.5rem;
-  text-align: left;
-  font-weight: 600;
+
+.dva-fade-in {
+  animation: dva-fade-in 0.5s ease-out;
 }
-.dva-assistant-message td {
-  border: 1px solid #d1d5db;
-  padding: 0.375rem 0.5rem;
+
+/* ================================================
+   Markdown Content Styling
+   Clean, readable, data-friendly
+   ================================================ */
+
+.dva-markdown h1,
+.dva-markdown h2,
+.dva-markdown h3 {
+  @apply font-semibold text-gray-900 mt-4 mb-2 first:mt-0;
 }
-.dva-assistant-message hr {
-  margin: 0.75rem 0;
-  border-color: #d1d5db;
+
+.dva-markdown h1 {
+  @apply text-base;
 }
-.dva-assistant-message code {
-  background-color: #e5e7eb;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-  font-size: 0.8125rem;
+.dva-markdown h2 {
+  @apply text-sm font-semibold;
+}
+.dva-markdown h3 {
+  @apply text-sm font-medium;
+}
+
+.dva-markdown p {
+  @apply mb-2 last:mb-0 leading-relaxed;
+}
+
+.dva-markdown ul,
+.dva-markdown ol {
+  @apply mb-2 pl-5;
+}
+
+.dva-markdown ul {
+  @apply list-disc;
+}
+.dva-markdown ol {
+  @apply list-decimal;
+}
+
+.dva-markdown li {
+  @apply mb-1;
+}
+
+.dva-markdown strong {
+  @apply font-semibold text-gray-900;
+}
+
+.dva-markdown code {
+  @apply bg-gray-100 text-indigo-700 px-1.5 py-0.5 rounded text-xs font-mono;
+}
+
+.dva-markdown pre {
+  @apply bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto mb-2 text-xs;
+}
+
+.dva-markdown pre code {
+  @apply bg-transparent text-gray-100 px-0 py-0;
+}
+
+.dva-markdown table {
+  @apply w-full border-collapse mb-2 text-xs;
+}
+
+.dva-markdown th {
+  @apply bg-gray-50 text-left px-3 py-2 font-semibold text-gray-700 border-b border-gray-200;
+}
+
+.dva-markdown td {
+  @apply px-3 py-1.5 border-b border-gray-100;
+}
+
+.dva-markdown tr:hover td {
+  @apply bg-gray-50/50;
+}
+
+.dva-markdown blockquote {
+  @apply border-l-2 border-indigo-300 pl-3 text-gray-600 italic mb-2;
+}
+
+.dva-markdown hr {
+  @apply my-3 border-gray-200;
+}
+
+.dva-markdown a {
+  @apply text-indigo-600 underline decoration-indigo-300 hover:text-indigo-800 hover:decoration-indigo-500 transition-colors;
 }
 
 /* Thinking indicator dots */
