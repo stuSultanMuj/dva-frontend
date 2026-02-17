@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+/* Markdown styling for assistant messages */
+.dva-assistant-message h3 {
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.dva-assistant-message p {
+  margin-bottom: 0.5rem;
+}
+.dva-assistant-message p:last-child {
+  margin-bottom: 0;
+}
+.dva-assistant-message strong {
+  font-weight: 600;
+}
+.dva-assistant-message ul {
+  margin-left: 1rem;
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+}
+.dva-assistant-message ol {
+  margin-left: 1rem;
+  list-style-type: decimal;
+  margin-bottom: 0.5rem;
+}
+.dva-assistant-message li {
+  margin-bottom: 0.25rem;
+}
+.dva-assistant-message table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.8125rem;
+}
+.dva-assistant-message th {
+  border: 1px solid #d1d5db;
+  background-color: #e5e7eb;
+  padding: 0.375rem 0.5rem;
+  text-align: left;
+  font-weight: 600;
+}
+.dva-assistant-message td {
+  border: 1px solid #d1d5db;
+  padding: 0.375rem 0.5rem;
+}
+.dva-assistant-message hr {
+  margin: 0.75rem 0;
+  border-color: #d1d5db;
+}
+.dva-assistant-message code {
+  background-color: #e5e7eb;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+}
