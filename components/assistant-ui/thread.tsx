@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   ThreadPrimitive,
   ComposerPrimitive,
@@ -11,6 +12,48 @@ import remarkGfm from "remark-gfm";
 function MarkdownText({ text }: { text: string }) {
   return (
     <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+  );
+}
+
+// Rotating analysis messages — specificity builds trust,
+// sequential framing creates progress illusion
+const THINKING_MESSAGES = [
+  "Analysiere deine Daten...",
+  "Durchsuche Kampagnen-Performance...",
+  "Vergleiche mit DACH-Benchmarks...",
+  "Prüfe Kontext und Saisonalität...",
+  "Formuliere Empfehlungen...",
+];
+
+function ThinkingIndicator() {
+  const [messageIndex, setMessageIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setMessageIndex((i) => (i + 1) % THINKING_MESSAGES.length);
+        setFade(true);
+      }, 200);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-3 py-1">
+      <div className="flex items-center gap-1">
+        <span className="dva-dot" />
+        <span className="dva-dot [animation-delay:0.2s]" />
+        <span className="dva-dot [animation-delay:0.4s]" />
+      </div>
+      <span
+        className="text-gray-500 transition-opacity duration-200"
+        style={{ opacity: fade ? 1 : 0 }}
+      >
+        {THINKING_MESSAGES[messageIndex]}
+      </span>
+    </div>
   );
 }
 
@@ -75,6 +118,9 @@ function AssistantMessage() {
     <MessagePrimitive.Root className="mb-4 flex w-full max-w-2xl">
       <div className="dva-assistant-message max-w-[80%] rounded-lg bg-gray-100 px-4 py-2.5 text-sm text-gray-900">
         <MessagePrimitive.Content components={{ Text: MarkdownText }} />
+        <MessagePrimitive.InProgress>
+          <ThinkingIndicator />
+        </MessagePrimitive.InProgress>
       </div>
     </MessagePrimitive.Root>
   );
