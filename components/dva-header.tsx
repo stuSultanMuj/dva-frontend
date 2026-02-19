@@ -1,9 +1,9 @@
 export function DvaHeader() {
   return (
-    <header className="flex items-center gap-3 border-b border-gray-100 bg-white/80 px-5 py-3 backdrop-blur-sm">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
+    <header className="relative z-10 flex items-center gap-3 border-b border-white/[0.06] bg-[#0f0f0f]/80 px-5 py-3 backdrop-blur-xl">
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] ring-1 ring-white/[0.08]">
         <svg
-          className="h-4 w-4 text-indigo-500"
+          className="h-4 w-4 text-[#4da5fc]"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
@@ -17,10 +17,10 @@ export function DvaHeader() {
         </svg>
       </div>
       <div>
-        <h1 className="text-sm font-semibold text-gray-900">
+        <h1 className="text-sm font-semibold text-white">
           Digital Visibility Agent
         </h1>
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-[#6a6a6f]">
           Marketing-Berater für digitale Sichtbarkeit
         </p>
       </div>

@@ -35,13 +35,22 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-stone-50">
+    <div className="relative z-[1] flex min-h-dvh items-center justify-center">
       <div className="dva-fade-in w-full max-w-sm px-4">
         {/* Branding */}
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50">
+          <div
+            className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
+              backdropFilter: "blur(20px) saturate(140%)",
+              boxShadow:
+                "inset 0 1px rgba(255,255,255,0.2), 0 0 0 1px rgba(255,255,255,0.08)",
+            }}
+          >
             <svg
-              className="h-7 w-7 text-indigo-500"
+              className="h-7 w-7 text-[#4da5fc]"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
@@ -54,20 +63,26 @@ export default function LoginPage() {
               />
             </svg>
           </div>
-          <h1 className="text-lg font-semibold text-gray-900">
+          <h1 className="text-lg font-semibold text-white">
             Digital Visibility Agent
           </h1>
-          <p className="mt-1 text-sm text-gray-400">
+          <p className="mt-1 text-sm text-[#6a6a6f]">
             Marketing-Berater für digitale Sichtbarkeit
           </p>
         </div>
 
-        {/* Login card */}
+        {/* Login card — frosted glass */}
         <form
           onSubmit={handleSubmit}
-          className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100"
+          className="rounded-2xl p-6 ring-1 ring-white/[0.08]"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+            backdropFilter: "blur(20px) saturate(140%)",
+            boxShadow: "0 8px 32px -8px rgba(0,0,0,0.3)",
+          }}
         >
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-[#a0a0a5]">
             Passwort
           </label>
           <input
@@ -75,12 +90,12 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Passwort eingeben"
-            className="mb-4 w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm transition-shadow duration-200 focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+            className="mb-4 w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder-[#5a5a5f] transition-all duration-200 focus:border-[#1488fc]/50 focus:outline-none focus:ring-2 focus:ring-[#1488fc]/20"
             autoFocus
             required
           />
           {error && (
-            <p className="mb-4 flex items-center gap-1.5 text-sm text-red-500">
+            <p className="mb-4 flex items-center gap-1.5 text-sm text-red-400">
               <svg
                 className="h-4 w-4 shrink-0"
                 fill="none"
@@ -100,7 +115,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-indigo-500 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-indigo-600 active:scale-[0.98] disabled:opacity-50"
+            className="w-full rounded-xl bg-[#1488fc] px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#1a94ff] active:scale-[0.98] disabled:opacity-50 shadow-[0_0_20px_rgba(20,136,252,0.3)]"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">

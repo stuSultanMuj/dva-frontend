@@ -52,7 +52,7 @@ function ThinkingIndicator() {
           <span className="dva-dot" style={{ animationDelay: "0.4s" }} />
         </div>
         <span
-          className="text-[13px] text-gray-400 transition-all duration-300 ease-out"
+          className="text-[13px] text-[#6a6a6f] transition-all duration-300 ease-out"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateX(0)" : "translateX(-3px)",
@@ -68,53 +68,11 @@ function ThinkingIndicator() {
           <div
             key={i}
             className={`h-[3px] flex-1 rounded-full transition-colors duration-500 ${
-              i <= stageIndex ? "bg-indigo-300" : "bg-gray-200"
+              i <= stageIndex ? "bg-[#1488fc]/60" : "bg-white/[0.06]"
             }`}
           />
         ))}
       </div>
-    </div>
-  );
-}
-
-// Rotating analysis messages — specificity builds trust,
-// sequential framing creates progress illusion
-const THINKING_MESSAGES = [
-  "Analysiere deine Daten...",
-  "Durchsuche Kampagnen-Performance...",
-  "Vergleiche mit DACH-Benchmarks...",
-  "Prüfe Kontext und Saisonalität...",
-  "Formuliere Empfehlungen...",
-];
-
-function ThinkingIndicator() {
-  const [messageIndex, setMessageIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setMessageIndex((i) => (i + 1) % THINKING_MESSAGES.length);
-        setFade(true);
-      }, 200);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="flex items-center gap-3 py-1">
-      <div className="flex items-center gap-1">
-        <span className="dva-dot" />
-        <span className="dva-dot [animation-delay:0.2s]" />
-        <span className="dva-dot [animation-delay:0.4s]" />
-      </div>
-      <span
-        className="text-gray-500 transition-opacity duration-200"
-        style={{ opacity: fade ? 1 : 0 }}
-      >
-        {THINKING_MESSAGES[messageIndex]}
-      </span>
     </div>
   );
 }
@@ -142,11 +100,20 @@ export function Thread() {
 
 function EmptyState() {
   return (
-    <div className="flex flex-grow basis-full flex-col items-center justify-center gap-6 text-center dva-fade-in">
-      {/* Icon */}
-      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50">
+    <div className="flex flex-grow basis-full flex-col items-center justify-center gap-6 text-center dva-fade-in px-4">
+      {/* DVA Icon — frosted glass */}
+      <div
+        className="flex h-14 w-14 items-center justify-center rounded-2xl"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
+          backdropFilter: "blur(20px) saturate(140%)",
+          boxShadow:
+            "inset 0 1px rgba(255,255,255,0.2), 0 0 0 1px rgba(255,255,255,0.08)",
+        }}
+      >
         <svg
-          className="h-7 w-7 text-indigo-500"
+          className="h-7 w-7 text-[#4da5fc]"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
@@ -160,15 +127,21 @@ function EmptyState() {
         </svg>
       </div>
 
+      {/* Title with gradient text */}
       <div>
-        <h2 className="text-lg font-medium text-gray-900">Willkommen</h2>
-        <p className="mt-1.5 max-w-xs text-sm leading-relaxed text-gray-400">
-          Frag mich zu deinen Marketing-Daten. Ich analysiere Performance,
-          vergleiche Benchmarks und gebe Empfehlungen.
+        <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-2">
+          Was möchtest du{" "}
+          <span className="bg-gradient-to-b from-[#4da5fc] via-[#4da5fc] to-white bg-clip-text text-transparent italic">
+            analysieren
+          </span>
+          ?
+        </h1>
+        <p className="text-base text-[#8a8a8f]">
+          Dein KI-Marketing-Berater für digitale Sichtbarkeit im DACH-Raum.
         </p>
       </div>
 
-      {/* Example questions — visual hints */}
+      {/* Example questions */}
       <div className="flex w-full max-w-sm flex-col gap-2">
         {[
           "Wie hat sich unser CPC entwickelt?",
@@ -177,9 +150,9 @@ function EmptyState() {
         ].map((q) => (
           <div
             key={q}
-            className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-left text-sm text-gray-500"
+            className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-left text-sm text-[#8a8a8f] hover:bg-white/[0.06] hover:text-white transition-all duration-200 cursor-default"
           >
-            <span className="mr-2 text-indigo-300">→</span>
+            <span className="mr-2 text-[#1488fc]/60">→</span>
             {q}
           </div>
         ))}
@@ -190,14 +163,14 @@ function EmptyState() {
 
 function Composer() {
   return (
-    <div className="border-t border-gray-200/60 bg-white/80 p-4 backdrop-blur-sm">
-      <ComposerPrimitive.Root className="mx-auto flex w-full max-w-2xl items-end gap-3">
+    <div className="border-t border-white/[0.06] bg-[#0f0f0f]/80 p-4 backdrop-blur-xl">
+      <ComposerPrimitive.Root className="relative mx-auto flex w-full max-w-2xl items-end gap-3 rounded-2xl bg-[#1e1e22] px-4 py-3 ring-1 ring-white/[0.08] shadow-[0_2px_20px_rgba(0,0,0,0.4)]">
         <ComposerPrimitive.Input
           placeholder="Stelle deine Frage..."
-          className="flex-1 resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-shadow duration-200 focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+          className="flex-1 resize-none bg-transparent text-[15px] text-white placeholder-[#5a5a5f] focus:outline-none"
           autoFocus
         />
-        <ComposerPrimitive.Send className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500 text-white shadow-sm transition-all duration-150 hover:bg-indigo-600 active:scale-95 disabled:opacity-30 disabled:hover:bg-indigo-500">
+        <ComposerPrimitive.Send className="flex h-10 shrink-0 items-center gap-2 px-4 rounded-full text-sm font-medium bg-[#1488fc] text-white transition-all duration-200 hover:bg-[#1a94ff] active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(20,136,252,0.3)]">
           <SendIcon />
         </ComposerPrimitive.Send>
       </ComposerPrimitive.Root>
@@ -226,7 +199,7 @@ function SendIcon() {
 function UserMessage() {
   return (
     <MessagePrimitive.Root className="dva-message-enter mb-3 flex w-full max-w-2xl justify-end">
-      <div className="max-w-[75%] rounded-2xl rounded-br-md bg-indigo-500 px-4 py-2.5 text-sm text-white shadow-sm">
+      <div className="max-w-[75%] rounded-2xl rounded-br-md bg-[#1488fc] px-4 py-2.5 text-sm text-white shadow-lg shadow-[#1488fc]/10">
         <MessagePrimitive.Content />
       </div>
     </MessagePrimitive.Root>
@@ -236,7 +209,7 @@ function UserMessage() {
 function AssistantMessage() {
   return (
     <MessagePrimitive.Root className="dva-message-enter mb-3 flex w-full max-w-2xl">
-      <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm text-gray-800 shadow-sm ring-1 ring-gray-100">
+      <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#1a1a1e] px-4 py-3 text-sm text-[#e0e0e5] ring-1 ring-white/[0.06]">
         <MessagePrimitive.Content components={{ Text: MarkdownText }} />
         <MessagePrimitive.InProgress>
           <ThinkingIndicator />

@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 /* ================================================
-   DVA Design System
-   Digital Visibility Agent — Minimal, warm, alive
+   DVA Design System — Dark Edition
+   Digital Visibility Agent
+   Inspired by bolt.new aesthetic
    ================================================ */
 
 @layer base {
   body {
-    @apply bg-stone-50 text-gray-900 antialiased;
+    @apply bg-[#0f0f0f] text-white antialiased;
   }
 
-  /* Subtle, minimal scrollbar */
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -20,11 +20,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #d1d5db;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
+    background: rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -35,7 +35,6 @@
    organic motion feels alive not mechanical
    ================================================ */
 
-/* Dot wave — smooth bounce with stagger */
 @keyframes dva-bounce {
   0%,
   60%,
@@ -50,11 +49,11 @@
 }
 
 .dva-dot {
-  @apply inline-block h-1.5 w-1.5 rounded-full bg-indigo-400;
+  @apply inline-block h-1.5 w-1.5 rounded-full;
+  background: #1488fc;
   animation: dva-bounce 1.4s ease-in-out infinite;
 }
 
-/* Shimmer sweep — subtle movement on thinking area */
 @keyframes dva-shimmer {
   0% {
     background-position: -200% 0;
@@ -68,14 +67,13 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(99, 102, 241, 0.04) 50%,
+    rgba(20, 136, 252, 0.06) 50%,
     transparent 100%
   );
   background-size: 200% 100%;
   animation: dva-shimmer 3s ease-in-out infinite;
 }
 
-/* Message entrance — subtle slide up */
 @keyframes dva-slide-up {
   from {
     opacity: 0;
@@ -91,7 +89,6 @@
   animation: dva-slide-up 0.25s ease-out;
 }
 
-/* Fade in */
 @keyframes dva-fade-in {
   from {
     opacity: 0;
@@ -106,14 +103,14 @@
 }
 
 /* ================================================
-   Markdown Content Styling
+   Markdown Content Styling — Dark Theme
    Clean, readable, data-friendly
    ================================================ */
 
 .dva-markdown h1,
 .dva-markdown h2,
 .dva-markdown h3 {
-  @apply font-semibold text-gray-900 mt-4 mb-2 first:mt-0;
+  @apply font-semibold text-white mt-4 mb-2 first:mt-0;
 }
 
 .dva-markdown h1 {
@@ -147,19 +144,19 @@
 }
 
 .dva-markdown strong {
-  @apply font-semibold text-gray-900;
+  @apply font-semibold text-white;
 }
 
 .dva-markdown code {
-  @apply bg-gray-100 text-indigo-700 px-1.5 py-0.5 rounded text-xs font-mono;
+  @apply bg-white/[0.08] text-[#4da5fc] px-1.5 py-0.5 rounded text-xs font-mono;
 }
 
 .dva-markdown pre {
-  @apply bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto mb-2 text-xs;
+  @apply bg-[#0a0a0e] text-[#c0c0c5] p-3 rounded-lg overflow-x-auto mb-2 text-xs ring-1 ring-white/[0.06];
 }
 
 .dva-markdown pre code {
-  @apply bg-transparent text-gray-100 px-0 py-0;
+  @apply bg-transparent text-[#c0c0c5] px-0 py-0;
 }
 
 .dva-markdown table {
@@ -167,40 +164,25 @@
 }
 
 .dva-markdown th {
-  @apply bg-gray-50 text-left px-3 py-2 font-semibold text-gray-700 border-b border-gray-200;
+  @apply bg-white/[0.04] text-left px-3 py-2 font-semibold text-[#c0c0c5] border-b border-white/[0.08];
 }
 
 .dva-markdown td {
-  @apply px-3 py-1.5 border-b border-gray-100;
+  @apply px-3 py-1.5 border-b border-white/[0.04];
 }
 
 .dva-markdown tr:hover td {
-  @apply bg-gray-50/50;
+  @apply bg-white/[0.02];
 }
 
 .dva-markdown blockquote {
-  @apply border-l-2 border-indigo-300 pl-3 text-gray-600 italic mb-2;
+  @apply border-l-2 border-[#1488fc]/40 pl-3 text-[#8a8a8f] italic mb-2;
 }
 
 .dva-markdown hr {
-  @apply my-3 border-gray-200;
+  @apply my-3 border-white/[0.08];
 }
 
 .dva-markdown a {
-  @apply text-indigo-600 underline decoration-indigo-300 hover:text-indigo-800 hover:decoration-indigo-500 transition-colors;
-}
-
-/* Thinking indicator dots */
-.dva-dot {
-  display: inline-block;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background-color: #60a5fa;
-  animation: dva-bounce 1.4s ease-in-out infinite;
-}
-
-@keyframes dva-bounce {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-  40% { transform: scale(1); opacity: 1; }
+  @apply text-[#4da5fc] underline decoration-[#1488fc]/40 hover:text-[#7dc0ff] hover:decoration-[#1488fc]/60 transition-colors;
 }
