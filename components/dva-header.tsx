@@ -1,19 +1,28 @@
 export function DvaHeader() {
   return (
-    <header className="relative z-10 flex items-center gap-3 border-b border-white/[0.06] bg-[#0f0f0f]/80 px-5 py-3 backdrop-blur-xl">
+    <header className="relative z-10 flex items-center gap-3 border-b border-white/[0.06] bg-[#0a0a0f]/80 px-5 py-3 backdrop-blur-xl">
       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] ring-1 ring-white/[0.08]">
         <svg
           className="h-4 w-4 text-[#4da5fc]"
-          fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          fill="none"
           stroke="currentColor"
         >
+          {/* Eye/lens with growth line */}
           <path
+            d="M2 12C2 12 6.5 5 12 5C17.5 5 22 12 22 12C22 12 17.5 19 12 19C6.5 19 2 12 2 12Z"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"
+            opacity="0.4"
           />
+          <path
+            d="M8 14L10.5 10.5L13.5 12.5L17 8"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <circle cx="17" cy="8" r="1.5" fill="currentColor" stroke="none" />
         </svg>
       </div>
       <div>
