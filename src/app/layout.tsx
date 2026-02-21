@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { RuntimeProvider } from "@/components/runtime-provider";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Digital Visibility Agent",
+  description: "Marketing-Berater für digitale Sichtbarkeit",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="de-CH">
+      <body className={`${inter.className} bg-[#F9F8F6] text-[#1A1A2E] antialiased`}>
+        <RuntimeProvider>{children}</RuntimeProvider>
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,25 @@
+# Dependencies (scaffolded on server)
+node_modules/
+
+# Environment variables (contains secrets)
+.env
+.env.local
+env.local
+
+# Next.js build output
+.next/
+out/
+
+# Design prototype (large, not production code)
+UI_UX Design Brief/
+
+# Screenshots (design reference, not source)
+screenshots/
+
+# Syncthing temp files
+~syncthing~*
+*.sync-conflict-*
+
+# OS files
+.DS_Store
+Thumbs.db

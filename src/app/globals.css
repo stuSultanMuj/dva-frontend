@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================
+   DVA Design System — Light/Warm Edition
+   Digital Visibility Agent
+   Ported from UI_UX Design Brief prototype
+   ================================================ */
+
+@layer base {
+  body {
+    @apply bg-[#F9F8F6] text-[#1A1A2E] antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ================================================
+   Animation System
+   ================================================ */
+
+@keyframes dva-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+.dva-dot {
+  @apply inline-block h-1.5 w-1.5 rounded-full;
+  background: #0D9488;
+  animation: dva-bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes dva-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.dva-thinking-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(13, 148, 136, 0.06) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: dva-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes dva-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dva-message-enter {
+  animation: dva-slide-up 0.25s ease-out;
+}
+
+@keyframes dva-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dva-fade-in {
+  animation: dva-fade-in 0.5s ease-out;
+}
+
+/* ================================================
+   Markdown Content Styling — Light Theme
+   Clean, readable, data-friendly
+   ================================================ */
+
+.dva-markdown h1,
+.dva-markdown h2,
+.dva-markdown h3 {
+  @apply font-semibold mt-4 mb-2 first:mt-0;
+  color: #1A1A2E;
+}
+
+.dva-markdown h1 {
+  @apply text-base;
+}
+.dva-markdown h2 {
+  @apply text-sm font-semibold;
+}
+.dva-markdown h3 {
+  @apply text-sm font-medium;
+}
+
+.dva-markdown p {
+  @apply mb-2 last:mb-0 leading-relaxed;
+  color: #4B5563;
+}
+
+.dva-markdown ul,
+.dva-markdown ol {
+  @apply mb-2 pl-5;
+}
+
+.dva-markdown ul {
+  @apply list-disc;
+}
+.dva-markdown ol {
+  @apply list-decimal;
+}
+
+.dva-markdown li {
+  @apply mb-1;
+  color: #4B5563;
+}
+
+.dva-markdown strong {
+  @apply font-semibold;
+  color: #1A1A2E;
+}
+
+.dva-markdown code {
+  @apply bg-[#F3F2EF] text-[#0D9488] px-1.5 py-0.5 rounded text-xs font-mono;
+}
+
+.dva-markdown pre {
+  @apply bg-[#F7F6F3] text-[#374151] p-3 rounded-lg overflow-x-auto mb-2 text-xs ring-1 ring-[#E8E6E1];
+}
+
+.dva-markdown pre code {
+  @apply bg-transparent text-[#374151] px-0 py-0;
+}
+
+.dva-markdown table {
+  @apply w-full border-collapse mb-2 text-xs;
+}
+
+.dva-markdown th {
+  @apply bg-[#F7F6F3] text-left px-3 py-2 font-semibold text-[#4B5563] border-b border-[#E8E6E1];
+}
+
+.dva-markdown td {
+  @apply px-3 py-1.5 border-b border-[#F3F2EF];
+}
+
+.dva-markdown tr:hover td {
+  @apply bg-[#FAFAF8];
+}
+
+.dva-markdown blockquote {
+  @apply border-l-2 border-[#0D9488]/40 pl-3 text-[#8C8C9A] italic mb-2;
+}
+
+.dva-markdown hr {
+  @apply my-3 border-[#E8E6E1];
+}
+
+.dva-markdown a {
+  @apply text-[#0D9488] underline decoration-[#0D9488]/40 hover:text-[#0F766E] hover:decoration-[#0D9488]/60 transition-colors;
+}
